@@ -10,7 +10,7 @@ def decompress(fname=None, dest=None):
     "decompress `fname` to folder `dest`."
     assert(fname), "Please specify a fname to decompress"
     fname = Path(fname)
-    dest = fname.parent if dest is None else Path(dest)/fname.stem
+    dest = fname.parent if dest is None else Path(dest)
     fname_suffix = fname.suffix
     if fname_suffix==".tar":
         tarfile.open(fname, 'r').extractall(dest)
@@ -21,5 +21,5 @@ def decompress(fname=None, dest=None):
     elif zipfile.is_zipfile(fname):
         zipfile.ZipFile(fname, 'r').extractall(dest)
     else:
-        print(f'{fname.stem} is not yet supported for decompressing')
+        print(f'{fname.suffix} is not yet supported for decompressing')
     return dest
