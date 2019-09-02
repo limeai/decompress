@@ -14,12 +14,14 @@ def decompress(fname=None, dest=None):
     fname_suffix = fname.suffix
     if fname_suffix==".tar":
         tarfile.open(fname, 'r').extractall(dest)
-    elif fname_suffix==".tgz":
+    elif fname_suffix==".tgz" or fname_suffix ==".gz":
         tarfile.open(fname, 'r:gz').extractall(dest)
     elif fname_suffix==".bz2":
         tarfile.open(fname, 'r:bz').extractall(dest)
+    elif fname_suffix==".xz":
+        tarfile.open(fname, 'r:xz').extractall(dest)
     elif zipfile.is_zipfile(fname):
         zipfile.ZipFile(fname, 'r').extractall(dest)
     else:
-        print(f'{fname.suffix} is not yet supported for decompressing')
+        print(f'{fname_suffix} is not yet supported for decompressing')
     return dest

@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="decompress",
-    version="0.0.3",
+    version="0.0.5",
     author="Kevin Bird",
     author_email="kevinbird15@gmail.com",
     description="A library to help decompress multiple compression types",
